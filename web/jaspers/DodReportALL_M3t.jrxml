@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DoDReportALL_M3t" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="2f61c139-db66-414e-97a4-ae330d88aa5e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DB2"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="ireport.jasperserver.url" value="http://192.200.9.206:8080/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.report.resource" value="/MODULE_COM/CODetail_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/MODULE_COM/CODetail"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="FromDate" class="java.lang.Integer"/>
+	<parameter name="ToDate" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT ROW_NUMBER() OVER(ORDER BY a.DOD030) AS RowNum,A.DOD030,A.OKCUNM ,A.DOD040,DOD210,DOD060,DOD070,DOD075,COALESCE(SUMAMT,0) AS SUMAMT ,COALESCE(b.REamt8,0) AS REamt8,COALESCE(((b.REamt8/SUMAMT ) * 100 )* -1,0) AS percen,COALESCE(SUMAMT,0) + COALESCE(b.REamt8,0)AS balance
+FROM (
+SELECT  DOD030,OKCUNM,DOD040,DOD210,DOD060,DOD070,DOD075,DOD070*DOD075 AS SUMAMT
+FROM BRLDTA0100.BMSDOD 
+left JOIN  M3FDBPRD.Ocusma ON OKCUNO = DOD030 
+WHERE DOD160 BETWEEN $P{FromDate}   AND  $P{ToDate}
+AND DOD210 = 20 
+GROUP BY OKCUNM ,DOD210,DOD060,DOD070,DOD075,DOD070,DOD075,DOD030,DOD040 ) A LEFT JOIN 
+(SELECT sum(DOD080) AS REamt8,DOD040
+FROM BRLDTA0100.BMSDOD  
+WHERE DOD110 IN('20','30','40') and DOD210 ='20'
+and DOD160 BETWEEN  $P{FromDate}  AND  $P{ToDate}
+GROUP BY DOD040 ) B ON A.DOD040 = B.DOD040
+ORDER BY DOD030]]>
+	</queryString>
+	<field name="ROWNUM" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="ROWNUM"/>
+	</field>
+	<field name="DOD030" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DOD030"/>
+	</field>
+	<field name="OKCUNM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="OKCUNM"/>
+	</field>
+	<field name="DOD040" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DOD040"/>
+	</field>
+	<field name="DOD210" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="DOD210"/>
+	</field>
+	<field name="DOD060" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DOD060"/>
+	</field>
+	<field name="DOD070" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="DOD070"/>
+	</field>
+	<field name="DOD075" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="DOD075"/>
+	</field>
+	<field name="SUMAMT" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="SUMAMT"/>
+	</field>
+	<field name="REAMT8" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="REAMT8"/>
+	</field>
+	<field name="PERCEN" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="PERCEN"/>
+	</field>
+	<field name="BALANCE" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="BALANCE"/>
+	</field>
+	<variable name="SUM_GUA" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUMAMT}]]></variableExpression>
+	</variable>
+	<variable name="SUM_AMT" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{REAMT8}]]></variableExpression>
+	</variable>
+	<variable name="PERCENT" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{PERCEN}]]></variableExpression>
+	</variable>
+	<variable name="SUM_BALANCE" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{BALANCE}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="130" y="30" width="180" height="20" forecolor="#333333" uuid="a6c726de-245d-4d21-90a9-672ea14d9a4f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DOD guarantee balance as of date‎:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="210" height="30" forecolor="#333333" uuid="41ac743b-20f9-4a88-ad0c-cc6ca30738ac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bangkok Ranch Public Co‎.‎, ‎Ltd‎.‎]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="30" width="20" height="20" forecolor="#333333" uuid="6f88f234-82f4-4248-a428-851f3f9ec0d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[To]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="30" width="60" height="20" uuid="cf2d0277-7c71-4c7c-90fc-8d76e11cd265"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FromDate}.toString().substring(6,8)  +"/" +$P{FromDate}.toString().substring(4,6) + "/" + $P{FromDate}.toString().substring(0,4)]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/MM/yyyy h:mm:ss a">
+				<reportElement x="475" y="20" width="100" height="20" uuid="3cb3f664-9ed7-49a7-9e01-3e6091c01749"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH SarabunPSK" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="550" y="0" width="20" height="20" uuid="2299e47b-cad9-4f3f-bdf5-9c5bf2cc8a2f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="510" y="0" width="40" height="20" forecolor="#333333" uuid="9cbade04-1adf-40b1-8fb9-1601c71cee06"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="13" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Page:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="390" y="30" width="100" height="20" uuid="29e6e7a0-4cd1-461f-aa90-bcc637553a4b"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ToDate}.toString().substring(6,8)  +"/" +$P{ToDate}.toString().substring(4,6) + "/" + $P{ToDate}.toString().substring(0,4)]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="30" height="21" forecolor="#333333" uuid="465122d6-24c6-4cd3-bf37-28783eae82d7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="0" width="50" height="21" forecolor="#333333" uuid="3ba7c67d-240f-4a00-b104-e652b1db8e8a">
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+					<paragraph firstLineIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Customer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="70" height="21" forecolor="#333333" uuid="34902d86-b59c-4ab7-ac11-426993585f4f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="50" height="21" forecolor="#333333" uuid="41f60d40-319c-4e80-b7af-84ce97b478a9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DOD Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="30" height="21" forecolor="#333333" uuid="fd670de8-f177-4669-98b0-17229ecc616e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Sts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="0" width="40" height="21" forecolor="#333333" uuid="47a3e8a5-c2b7-4a3d-ae40-ee2d90998440"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[House]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="40" height="21" forecolor="#333333" uuid="04a7f604-44d2-48a0-98c2-78fab8f8dcbc"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Qty  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="0" width="20" height="21" forecolor="#333333" uuid="ada0016b-1dac-4d0d-8378-6f13d251a747"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[UNP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="0" width="50" height="21" forecolor="#333333" uuid="7738530c-1246-4644-bb07-a89df5a86415"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Req-Guarantee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="50" height="21" forecolor="#333333" uuid="05d4ec46-9310-4f86-b007-6bd52f1e63f7">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Receive‎-‎Amt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="30" height="21" forecolor="#333333" uuid="d6d749c3-cf2b-43cc-925d-c65427d4d0a7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[%‎RCV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="40" height="21" forecolor="#333333" uuid="9b129139-fa3f-4122-8708-421276fca91b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="50" height="21" forecolor="#333333" uuid="3e92f724-aea8-44c6-bb6b-c241a60ea33b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[   Remark]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-10" y="0" width="570" height="1" uuid="9d42bb5b-55a6-43db-813c-54bb0bf43e27"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-10" y="21" width="570" height="1" uuid="e1a3c921-c89e-4056-a1b7-5200b52e9224"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="30" height="20" uuid="244e4367-768c-4aac-8463-b8a9228cbc13">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c912708b-c234-42df-a7ef-eb6b6e7e2011"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ROWNUM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="0" width="50" height="20" uuid="1576f950-cefb-4c82-a386-bbb4061641d4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0556487-53c4-4365-9841-0c4f5e1ce243"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOD030}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="70" height="20" uuid="2fca07f3-7026-4317-bb20-6f377db0e18e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="58e04448-79be-4a2e-a119-736c5244e026"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OKCUNM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="50" height="20" uuid="848f6053-fddb-4732-a8ca-77d7f24ceeda">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8dfafdb4-2c8e-4e08-b768-252b99a842f0"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOD040}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="30" height="20" uuid="7a3d2618-dec4-4c90-b891-61fbaed0b376">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7b816195-9825-4f79-aeaf-514c37376a40"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOD210}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="40" height="20" uuid="3a3bcf57-9ac8-49b8-911e-d49c0461d928">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1b17f8f3-fb71-4779-b9ef-072c0ec076bc"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOD060}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###">
+				<reportElement x="270" y="0" width="40" height="20" uuid="36960a51-b0b6-4975-aedb-af0e6c1e79cb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0f3bd982-02b6-4e92-8acc-12d5f688c773"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOD070}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="20" height="20" uuid="2ab33cc4-98c9-4397-b666-0159cd9a975a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a98ab79b-2757-44e1-ac16-fba8f7ebfbc4"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOD075}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###">
+				<reportElement x="330" y="0" width="50" height="20" uuid="e8cc8b4c-d00d-4b95-af0f-94e68682e384">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="124066ba-c2bd-478e-8fbd-f2418ac534da"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUMAMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###">
+				<reportElement x="380" y="0" width="50" height="20" uuid="1fa842f8-d754-41b1-bbd9-6b1689b40faa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f4a4a186-ddb0-411d-882e-40b1ee71e334"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REAMT8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="30" height="20" uuid="4f2d41fd-334b-4188-9b91-2639c7fbeb40">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1b3fff2-a376-4c8c-88f9-0382ea2396f3"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERCEN} + "%"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="40" height="20" uuid="a7226979-e604-4203-9f57-fcef71b6a98e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7e56f949-76aa-40aa-9efc-51ae55dfcc75"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BALANCE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement x="500" y="0" width="50" height="20" uuid="d349b1d8-9a05-431b-86a4-7ca2c04fc706">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REAMT8} == 0.00 ? "*Check it should close" : null]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<summary>
+		<band height="21">
+			<staticText>
+				<reportElement x="200" y="0" width="30" height="21" forecolor="#333333" uuid="fae0c0f2-6a10-4102-9825-ea6e5a382f40"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField pattern="#,##0.###">
+				<reportElement x="330" y="0" width="50" height="21" uuid="73f5aadf-3015-46a7-a346-96f02b4a9251"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUM_GUA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###">
+				<reportElement x="380" y="0" width="50" height="21" uuid="dd692efc-59a2-453e-a1dc-19a9169de856"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUM_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.##%">
+				<reportElement x="430" y="0" width="30" height="21" uuid="3ff59c2d-7183-4ee4-9411-e8fb10f32bbd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($V{SUM_AMT}/$V{SUM_GUA}) * -1]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###">
+				<reportElement x="460" y="0" width="50" height="21" uuid="5277bca3-f909-4119-8879-f4914ad71781"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUM_BALANCE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
