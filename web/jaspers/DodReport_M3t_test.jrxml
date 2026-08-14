@@ -222,27 +222,27 @@ order by DATEDAY]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{MODIFIEDDATE}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.###">
+			<textField pattern="#,##0.00#">
 				<reportElement x="335" y="0" width="100" height="20" uuid="a2becff6-3f2d-48ef-9c43-43372ff8dd14">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df953009-ea9c-4e5a-9525-25835628786f"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Right">
 					<font fontName="TH SarabunPSK" size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{INPU} == 0.00 ? "-" :$F{INPU}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.###">
+			<textField pattern="#,##0.00#">
 				<reportElement x="435" y="0" width="100" height="20" uuid="1a4a268a-7fc8-4967-8dd9-238da1985bd2">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a549b571-9019-4af8-9843-0f9231fb238f"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Right">
 					<font fontName="TH SarabunPSK" size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{RETUR} == 0.00 ? "-" :$F{RETUR}*-1]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.###">
+			<textField pattern="#,##0.00#">
 				<reportElement x="535" y="0" width="75" height="20" uuid="49b39be8-6df3-46d3-ae3f-52e85b6bd5af"/>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Right">
 					<font fontName="TH SarabunPSK" size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{SUM_SEQ}]]></textFieldExpression>
@@ -268,23 +268,23 @@ order by DATEDAY]]>
 				</textElement>
 				<text><![CDATA[Total:]]></text>
 			</staticText>
-			<textField pattern="#,##0.###;(#,##0.###-)">
+			<textField pattern="#,##0.00#">
 				<reportElement x="335" y="0" width="100" height="21" uuid="6dd07a7a-2e58-4b11-861a-c1a9c783e689"/>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Right">
 					<font fontName="TH SarabunPSK" size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{SUM_INPU}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.###">
+			<textField pattern="#,##0.00#">
 				<reportElement x="435" y="0" width="100" height="21" uuid="484ade8a-8d3e-433c-82d8-10b57f5b385d"/>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Right">
 					<font fontName="TH SarabunPSK" size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{SUM_RETUR} == 0 ? 0 :$V{SUM_RETUR}*-1]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.###">
+			<textField pattern="#,##0.00#">
 				<reportElement x="535" y="0" width="75" height="21" uuid="07158bc6-4715-4bfe-a2c8-46af3ed4608e"/>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Right">
 					<font fontName="TH SarabunPSK" size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{SUM_INPU} + ( $V{SUM_RETUR} * -1)]]></textFieldExpression>

@@ -316,7 +316,7 @@
     <div class="wrap-login100" style="width: 100%;margin-bottom: 0px;">
         <label for="vDepositNo" id="vDepositNoLab">DOD DEPOSIT NUMBER : </label>
         <input id="vDepositNo" name="vDepositNo" style="width: 150px; text-align: left">
-        <button id="vCreate" class="btn btn-success" type="submit" form="" onclick="CheckDataToSave()">ค้นหา</button>
+        <button id="vSearch" class="btn btn-success" type="submit" form="" onclick="CheckDataToClose()">ค้นหา</button>
     </div>
     <div id="jsGrid"></div>
     <div class="wrap-test" style="width: 100%;margin-bottom: 0px;" id="modetransfer">  
@@ -413,7 +413,7 @@
 
         },
         fields: [
-            {title: "รหัสลูกค้า", name: "RCUSTOMER", css: "limitext", type: "text", editing: false, align: "center", width: 50},
+            {title: "รหัสลูกค้า", name: "RCUSTOMER", css: "limitext", type: "text", editing: false, align: "center", width: 30},
             {title: "รหัสประกันลูกเป็ด", name: "RDUCKCODE", css: "limitext", type: "text", editing: false, align: "center", width: 50},
             {title: "รายละเอียด", name: "RDETAIL", css: "limitext", type: "text", editing: false, align: "center", width: 50},
             {title: "จำนวน(บาท)", name: "RAMTBAHT", css: "limitext", type: "text", editing: false, align: "center", width: 50},
@@ -446,7 +446,7 @@
 
     });
 
-    function CheckDataToSave() {
+    function CheckDataToClose() {
 //        console.log("custoemrselection")
         $.ajax({
             url: './Action',
@@ -514,6 +514,7 @@
                         return;
                     } else {
                         alert(response);
+                        $("#jsGrid").jsGrid("loadData");
                     }
                 });
             }

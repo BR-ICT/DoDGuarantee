@@ -116,7 +116,7 @@
 </html>
 
 <script type="text/javascript">
-
+//console.log("test")
     <% if (request.getParameter("page") != null) {%>
     $("#vSection").load("./pages/<%=request.getParameter("page").toString()%>.jsp");
     <% }%>

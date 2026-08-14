@@ -92,6 +92,7 @@ public class Action extends HttpServlet {
                         request.getParameter("txtReturn"),
                         request.getParameter("txtDescription"),
                         request.getParameter("type"),
+                        request.getParameter("remark"),
                         request.getParameter("user")));
                 out.flush();
                 break;

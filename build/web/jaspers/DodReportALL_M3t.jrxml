@@ -416,7 +416,7 @@ ORDER BY DOD030]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DOD070}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00#">
 				<reportElement x="310" y="0" width="20" height="20" uuid="2ab33cc4-98c9-4397-b666-0159cd9a975a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a98ab79b-2757-44e1-ac16-fba8f7ebfbc4"/>
 				</reportElement>
@@ -434,7 +434,7 @@ ORDER BY DOD030]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SUMAMT}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.###">
+			<textField pattern="#,##0.00#">
 				<reportElement x="380" y="0" width="50" height="20" uuid="1fa842f8-d754-41b1-bbd9-6b1689b40faa">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f4a4a186-ddb0-411d-882e-40b1ee71e334"/>
 				</reportElement>
@@ -452,7 +452,7 @@ ORDER BY DOD030]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PERCEN} + "%"]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0.00#">
 				<reportElement x="460" y="0" width="40" height="20" uuid="a7226979-e604-4203-9f57-fcef71b6a98e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7e56f949-76aa-40aa-9efc-51ae55dfcc75"/>
 				</reportElement>
@@ -492,14 +492,14 @@ ORDER BY DOD030]]>
 				</textElement>
 				<text><![CDATA[Total:]]></text>
 			</staticText>
-			<textField pattern="#,##0.###">
+			<textField pattern="#,##0.00#">
 				<reportElement x="330" y="0" width="50" height="21" uuid="73f5aadf-3015-46a7-a346-96f02b4a9251"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{SUM_GUA}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.###">
+			<textField pattern="#,##0.00#">
 				<reportElement x="380" y="0" width="50" height="21" uuid="dd692efc-59a2-453e-a1dc-19a9169de856"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK"/>
@@ -513,7 +513,7 @@ ORDER BY DOD030]]>
 				</textElement>
 				<textFieldExpression><![CDATA[($V{SUM_AMT}/$V{SUM_GUA}) * -1]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.###">
+			<textField pattern="#,##0.00#">
 				<reportElement x="460" y="0" width="50" height="21" uuid="5277bca3-f909-4119-8879-f4914ad71781"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK"/>

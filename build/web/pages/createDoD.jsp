@@ -396,7 +396,10 @@
                                 <td>คืนเงินมัดจำ</td>-->
             </tr>
             <tr>
-                <th> <input name="txtDescription" type="text" value="รับเงินมัดจำ DOD" id="txtDescription" style="color:Red;height:20px;width:325px;"> </th>
+                <th>
+                    <textarea id="txtDescription" name="txtDescription" rows="4" cols="50" >รับเงินมัดจำ DOD</textarea>
+                    <!--<input name="txtDescription" type="text" value="รับเงินมัดจำ DOD" id="txtDescription" style="color:Red;height:20px;width:325px;">--> 
+                </th>
                 <th> <input name="txtRecript" type="text" value="0.00" id="txtRecript" style="color:Red;width:150px;"> 
                     <!--<span id="lblRecript" style="color:#CC3300;font-size:Large;font-weight:bold;">0.00</span>-->
                 </th>
@@ -416,6 +419,12 @@
                 </th>
                 <th></th>
                 <th></th>
+            </tr>
+            <tr>
+                <th><span id="Label16" style="font-size: large">Remark : </span>
+                    <input name="txtRemark" type="text" value="Flock no." id="txtRemark" style="color:Red;width:300px;">
+                </th>
+               
             </tr>
         </table>
         <br>
@@ -508,7 +517,7 @@
             $("#txtRecript").val("0.00");
 //            $("#lblRecript").text("0.00");
         } else if (typeno === "2") {
-            $("#txtDescription").val("คืนเงินมัดจำ DOD");
+            $("#txtDescription").val("ชําระค่าลูกเป็ด วันที Inv. จํานวน ตัว");
 //            $("#lblRecript").hide();
             $("#txtRecript").hide();
 //            $("#lblreturn").show();
@@ -565,6 +574,7 @@
         var type = $("#typechooser").val();
         var txtRecript = $("#txtRecript").val();
         var txtReturn = $("#txtReturn").val();
+        var remark = $("#txtRemark").val();
         if (type === "1" && txtRecript === "") {
             alert("โปรดใส่จำนวนรับเงินมัดจำ");
             return;
@@ -589,6 +599,7 @@
                 txtReturn: txtReturn,
                 txtDescription: $("#txtDescription").val(),
                 type: type,
+                remark:remark,
                 user: user
             },
             async: false
@@ -607,6 +618,7 @@
 
     function cleardetail() {
         $("#typechooser").val("1");
+        $("#txtRemark").val(" Flock no.");
         typechange();
     }
 

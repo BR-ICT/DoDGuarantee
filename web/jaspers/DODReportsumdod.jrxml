@@ -171,7 +171,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 	<columnHeader>
 		<band height="22" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="20" height="21" forecolor="#333333" uuid="465122d6-24c6-4cd3-bf37-28783eae82d7"/>
+				<reportElement x="0" y="1" width="20" height="20" forecolor="#333333" uuid="465122d6-24c6-4cd3-bf37-28783eae82d7"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -179,7 +179,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[No.]]></text>
@@ -239,7 +239,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[  Sts]]></text>
@@ -253,7 +253,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[House]]></text>
@@ -273,7 +273,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				<text><![CDATA[Qty  ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="300" y="0" width="20" height="21" forecolor="#333333" uuid="ada0016b-1dac-4d0d-8378-6f13d251a747"/>
+				<reportElement x="300" y="0" width="30" height="21" forecolor="#333333" uuid="ada0016b-1dac-4d0d-8378-6f13d251a747"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -281,13 +281,13 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[UNP]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="320" y="0" width="40" height="21" forecolor="#333333" uuid="7738530c-1246-4644-bb07-a89df5a86415">
+				<reportElement x="330" y="0" width="40" height="21" forecolor="#333333" uuid="7738530c-1246-4644-bb07-a89df5a86415">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
@@ -303,7 +303,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				<text><![CDATA[Req-Guarantee]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="360" y="1" width="40" height="21" forecolor="#333333" uuid="05d4ec46-9310-4f86-b007-6bd52f1e63f7">
+				<reportElement x="370" y="1" width="40" height="21" forecolor="#333333" uuid="05d4ec46-9310-4f86-b007-6bd52f1e63f7">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<box>
@@ -319,7 +319,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				<text><![CDATA[DOD‎]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="400" y="0" width="40" height="21" forecolor="#333333" uuid="d6d749c3-cf2b-43cc-925d-c65427d4d0a7"/>
+				<reportElement x="410" y="0" width="40" height="21" forecolor="#333333" uuid="d6d749c3-cf2b-43cc-925d-c65427d4d0a7"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -333,7 +333,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				<text><![CDATA[Receive‎-‎Amt‎]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="440" y="0" width="40" height="21" forecolor="#333333" uuid="9b129139-fa3f-4122-8708-421276fca91b"/>
+				<reportElement x="450" y="1" width="40" height="21" forecolor="#333333" uuid="9b129139-fa3f-4122-8708-421276fca91b"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -347,7 +347,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				<text><![CDATA[Return‎-‎Amt‎]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="520" y="1" width="30" height="21" forecolor="#333333" uuid="3e92f724-aea8-44c6-bb6b-c241a60ea33b"/>
+				<reportElement x="530" y="1" width="30" height="20" forecolor="#333333" uuid="3e92f724-aea8-44c6-bb6b-c241a60ea33b"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -367,7 +367,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="480" y="1" width="40" height="20" forecolor="#333333" uuid="bfe5b8e1-2fa5-4ace-b30f-ff67c464804c">
+				<reportElement x="490" y="1" width="40" height="20" forecolor="#333333" uuid="bfe5b8e1-2fa5-4ace-b30f-ff67c464804c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
@@ -393,10 +393,10 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="-1" width="20" height="21" uuid="3b139434-6232-447c-974f-900ede6432e0">
+				<reportElement x="0" y="0" width="20" height="20" uuid="3b139434-6232-447c-974f-900ede6432e0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bdabf9fd-54d6-4a36-88b7-1bd1275fb403"/>
 				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ROWNUM}]]></textFieldExpression>
@@ -423,7 +423,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				<reportElement x="160" y="0" width="50" height="20" uuid="703e5e95-825e-4a02-9e8c-86e3462766e1">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ed851355-e5ec-423e-b06c-5a4e362c3dd2"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DOD040}]]></textFieldExpression>
@@ -432,7 +432,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				<reportElement x="210" y="0" width="30" height="20" uuid="f0062e3f-9318-4f29-8ced-8adea7cdebcd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6083b7f-3602-42e2-a275-e213d160bd7e"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DOD210}]]></textFieldExpression>
@@ -441,7 +441,7 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				<reportElement x="240" y="0" width="20" height="20" uuid="209d9cb0-863e-402f-9015-b04be08bad6f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8d5048cf-d806-43d0-ac9c-191524cb8c9e"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DOD060}]]></textFieldExpression>
@@ -455,17 +455,17 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DOD070}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="300" y="-1" width="20" height="21" uuid="d03145c7-0e7a-4277-8eeb-eb33e4e4c92c">
+			<textField pattern="#,##0.###;(#,##0.###-)">
+				<reportElement x="300" y="-1" width="30" height="21" uuid="d03145c7-0e7a-4277-8eeb-eb33e4e4c92c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee05c161-bc15-4300-89b7-3afe1786553f"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DOD075}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="320" y="-1" width="40" height="21" uuid="2b7c7d0f-0929-41af-b74f-ac8c08bf46d9">
+			<textField pattern="#,##0.00#">
+				<reportElement x="330" y="-1" width="40" height="21" uuid="2b7c7d0f-0929-41af-b74f-ac8c08bf46d9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="116d4ae3-fff4-484e-ab4b-718016cd1c59"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -474,8 +474,8 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SUMAMT}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="360" y="-1" width="40" height="21" uuid="bceab27d-381e-4964-b710-61751e5c7691">
+			<textField pattern="#,##0.00#">
+				<reportElement x="370" y="0" width="40" height="20" uuid="bceab27d-381e-4964-b710-61751e5c7691">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5ccc02a4-f089-4a1b-9c23-1b0d3f316f50"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -483,8 +483,8 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SUMDOD}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="400" y="0" width="40" height="20" uuid="a6fcaa20-c0be-4fa6-9432-92a331197654">
+			<textField pattern="#,##0.00#">
+				<reportElement x="410" y="0" width="40" height="20" uuid="a6fcaa20-c0be-4fa6-9432-92a331197654">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="22bc33a0-2210-4aa4-932f-ae06a56c1f3d"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -492,8 +492,8 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{RECEIVEAMT}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="440" y="0" width="40" height="20" uuid="86037e99-88aa-4c4c-8fab-a306c0a7eca3">
+			<textField pattern="#,##0.00#">
+				<reportElement x="450" y="0" width="40" height="20" uuid="86037e99-88aa-4c4c-8fab-a306c0a7eca3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1c7e7ac2-29a5-49e5-9a1a-16498b7717b5"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -501,8 +501,8 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{RETURNAMT}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="480" y="0" width="40" height="20" uuid="f8c8a1ef-bc63-4045-9da1-18d9597b74bb">
+			<textField pattern="#,##0.00#">
+				<reportElement x="490" y="0" width="40" height="20" uuid="f8c8a1ef-bc63-4045-9da1-18d9597b74bb">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d32a5425-108f-4b4b-a181-c2ce75eb6d16"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -511,9 +511,9 @@ GROUP BY DOD030,DOD040 ) Y ON X.DOD040 = Y.DOD040  ) V]]>
 				<textFieldExpression><![CDATA[$F{BALANCE}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="520" y="0" width="30" height="20" uuid="27a7a2b7-5fc3-4450-830d-da7f52731137"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="TH SarabunPSK"/>
+				<reportElement x="533" y="0" width="30" height="20" uuid="27a7a2b7-5fc3-4450-830d-da7f52731137"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" isItalic="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{Remark}]]></textFieldExpression>
 			</textField>

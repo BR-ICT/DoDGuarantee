@@ -1166,7 +1166,7 @@ public class Select {
                             + "DOD190, DOD200, DOD210, DOD220, DOD230, DOD240)\n"
                             + "VALUES('" + cono + "', '" + divi + "',\n"
                             + "'" + farmer + "', '" + returnno + "', '" + currentdate + "',\n"
-                            + "'" + Number + "', '" + price + "', '" + qty + "',\n"
+                            + "'" + Number + "', '" + qty + "', '" + price + "',\n"
                             + "'" + amount + "', '" + currentdate + "', NOW(), '10', '', '" + reason + "',\n"
                             + "'" + user + "', NOW(), '0', '" + currentdate + "', '" + hoursminute + "', '" + currentdate + "',\n"
                             + "'0', '" + user + "', '10', '0', '0', '')";
@@ -1202,7 +1202,7 @@ public class Select {
     public static String SaveCreateDODorder(String cono, String divi,
             String customer, String lblSUNO, String lblTRATGNO,
             String lblHOUSE, String lblQTY, String txtRecript,
-            String txtReturn, String txtDescription, String type, String user) throws Exception {
+            String txtReturn, String txtDescription, String type, String remark, String user) throws Exception {
 
         Connection conn = ConnectDB2.ConnectionDB();
         String currentdate = GetDateDecmalCurrenttime();
@@ -1249,7 +1249,7 @@ public class Select {
                             + "DOD140, DOD150, DOD160,\n"
                             + "DOD170, DOD180, DOD190,\n"
                             + "DOD200, DOD210, DOD220,\n"
-                            + "DOD230, DOD240)\n"
+                            + "DOD230, DOD240, DOD250)\n"
                             + " values(  '" + cono + "','" + divi + "',\n"
                             + " '" + lblSUNO + "',\n"
                             + " '" + lblTRATGNO + " ' ,\n"
@@ -1274,7 +1274,8 @@ public class Select {
                             + " '20',\n"
                             + " '0', \n"
                             + " '0', \n"
-                            + " '' )";
+                            + " '', \n"
+                            + "'" + remark + "')";
                 } else if (type.equals("2")) {
                     query3 = "insert into " + dbname + ".BMSDOD(DOD010, DOD020, DOD030,\n"
                             + "DOD040, DOD050, DOD060,\n"
@@ -1284,7 +1285,7 @@ public class Select {
                             + "DOD140, DOD150, DOD160,\n"
                             + "DOD170, DOD180, DOD190,\n"
                             + "DOD200, DOD210, DOD220,\n"
-                            + "DOD230, DOD240)\n"
+                            + "DOD230, DOD240, DOD250)\n"
                             + " values(  '" + cono + "','" + divi + "',\n"
                             + " '" + lblSUNO + "',\n"
                             + " '" + lblTRATGNO + " ' ,\n"
@@ -1309,7 +1310,8 @@ public class Select {
                             + " '20',\n"
                             + " '0', \n"
                             + " '0', \n"
-                            + " '' )";
+                            + " '', \n"
+                            + "'" + remark + "')";
                 }
                 stmt3.execute(query3);
                 alerttext = "บันทึกข้อมูลเรียบร้อย";
@@ -1541,7 +1543,7 @@ public class Select {
 
 //        JSONArray mJSonArr = new JSONArray();
         Connection conn = ConnectDB2.ConnectionDB();
-        
+
         String[] infor = (Supplier).split("_");
         String suppliercode = infor[0];
         String Date = infor[1];
